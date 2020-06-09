@@ -54,12 +54,17 @@ main() {
   print('\t${greaterThan18.length} pessoas têm mais de 18 anos.');
 
   print('\nPasso 4 - Encontrar a pessoa mais velha\n');
-  var idades =
-      greaterThan18.map((person) => num.tryParse(person["idade"])).toList();
-  idades.sort((a, b) => a - b);
-  var oldestPerson = personsMap
-      .where((element) => num.tryParse(element["idade"]) == idades.last)
-      .toList();
+  var oldestPerson = greaterThan18.toList();
+  oldestPerson.sort((a,b) => num.parse(a['idade']).compareTo(num.parse(b['idade'])));
   print(
-      '\t${oldestPerson[0]["nome"]} é a pessoa mais velha e tem ${oldestPerson[0]["idade"]} anos.\n');
+      '\t${oldestPerson.last["nome"]} é a pessoa mais velha e tem ${oldestPerson.last["idade"]} anos.\n');
+
+  // var idades =
+  //     greaterThan18.map((person) => num.tryParse(person["idade"])).toList();
+  // idades.sort((a, b) => a - b);
+  // var oldestPerson = personsMap
+  //     .where((element) => num.tryParse(element["idade"]) == idades.last)
+  //     .toList();
+  // print(
+  //     '\t${oldestPerson[0]["nome"]} é a pessoa mais velha e tem ${oldestPerson[0]["idade"]} anos.\n');
 }
